@@ -24,21 +24,83 @@
  
       minikube status
   
- This is shown that minikube running successfully
+ The above command is shown that minikube running successfully
  
       host: Running
       kubelet: Running
       apiserver: Running
       kubectl: Correctly Configured: pointing to minikube-vm at 192.168.99.100
       
- Then write the file for deployment,service and secret. Here i write the file for sonarqube and postgres. 
+Then write the file for deployment,service and secret. Here i write the file for sonarqube and postgres. 
  
- Following is used to create the password for the postgres. So i used the object kind as a secret.
+Following is used to create the password for the postgres. So i used the object kind as a secret.
  
- 1. [postgres-secret.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-secret.yml)
+1. [postgres-secret.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-secret.yml)
  
-      kubectl apply -f postgres-secret.yml
+         kubectl apply -f postgres-secret.yml
+       
+  To list the secrets, 
+  
+        kubectl get secret
+        
+        NAME                  TYPE                                  DATA   AGE
+        postgres              Opaque                                1      5h
 
 
+1. [postgres-deployment.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-deployment.yml)
  
+         kubectl apply -f postgres-deployment.yml
+         
+         
+   To list the deployment,
+         
+         kubectl get deployment
+         
+         NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+         sonar-postgres   1         1         1            1           2h
+
+         
+1. [postgres-svc.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-svc.yml)
  
+         kubectl apply -f postgres-svc.yml  
+         
+ To list the service,
+ 
+          kubectl get service
+ 
+         NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+         sonar-postgres   ClusterIP   10.104.37.212    <none>        5432/TCP         2h
+
+
+1. [sonar-deployment.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/sonar-deployment.yml)
+ 
+         kubectl apply -f sonar-deployment.yml
+         
+  To list the deployment,
+         
+         kubectl get deployment
+         
+         NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+         sonar            1         1         1            1           2h
+ 
+ 1. [sonar-svc.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/sonar-svc.yml)
+ 
+         kubectl apply -f sonar-svc.yml
+         
+         
+ To list the service,
+ 
+          kubectl get service
+ 
+         NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+         sonar            NodePort    10.99.198.48     <none>        80:30000/TCP     2h
+         
+ Once you have created the service and the deployment you need to check on the Pod which will has been created for this SonarQube
+
+You check by giving,
+
+      kubectl get pod
+     
+         NAME                           READY   STATUS    RESTARTS   AGE
+         sonar-postgres-58445ff765-jdmvc   1/1     Running   0          2h
+         sonar-6867cc9bc5-bgcnw            1/1     Running   19         3h
