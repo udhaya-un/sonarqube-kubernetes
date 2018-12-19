@@ -47,7 +47,7 @@ Following is used to create the password for the postgres. So i used the object 
         postgres              Opaque                                1      5h
 
 
-1. [postgres-deployment.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-deployment.yml)
+2. [postgres-deployment.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-deployment.yml)
  
          kubectl apply -f postgres-deployment.yml
          
@@ -60,7 +60,7 @@ Following is used to create the password for the postgres. So i used the object 
          sonar-postgres   1         1         1            1           2h
 
          
-1. [postgres-svc.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-svc.yml)
+3. [postgres-svc.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-svc.yml)
  
          kubectl apply -f postgres-svc.yml  
          
@@ -72,7 +72,7 @@ Following is used to create the password for the postgres. So i used the object 
          sonar-postgres   ClusterIP   10.104.37.212    <none>        5432/TCP         2h
 
 
-1. [sonar-deployment.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/sonar-deployment.yml)
+4. [sonar-deployment.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/sonar-deployment.yml)
  
          kubectl apply -f sonar-deployment.yml
          
@@ -83,7 +83,7 @@ Following is used to create the password for the postgres. So i used the object 
          NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
          sonar            1         1         1            1           2h
  
- 1. [sonar-svc.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/sonar-svc.yml)
+ 5. [sonar-svc.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/sonar-svc.yml)
  
          kubectl apply -f sonar-svc.yml
          
