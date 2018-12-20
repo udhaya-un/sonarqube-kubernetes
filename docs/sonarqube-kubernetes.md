@@ -33,7 +33,9 @@
       
 Then write the file for deployment,service and secret. Here i write the file for sonarqube and postgres. 
  
-Following is used to create the password for the postgres. So i used the object kind as a secret.
+Following file is use to create the password for the postgres. So i used the object kind as a secret.
+
+## Secret
  
 1. [postgres-secret.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-secret.yml)
  
@@ -47,7 +49,7 @@ Following is used to create the password for the postgres. So i used the object 
         
         NAME                  TYPE                                  DATA   AGE
         postgres              Opaque                                1      5h
-
+## Postgres deployment
 
 2. [postgres-deployment.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-deployment.yml)
  
@@ -63,6 +65,7 @@ Following is used to create the password for the postgres. So i used the object 
          NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
          sonar-postgres   1         1         1            1           2h
 
+## Postgres service
          
 3. [postgres-svc.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-svc.yml)
  
@@ -77,6 +80,7 @@ Following is used to create the password for the postgres. So i used the object 
          NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
          sonar-postgres   ClusterIP   10.104.37.212    <none>        5432/TCP         2h
 
+## SonarQube deployment
 
 4. [sonar-deployment.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/sonar-deployment.yml)
  
@@ -90,6 +94,8 @@ Following is used to create the password for the postgres. So i used the object 
          
          NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
          sonar            1         1         1            1           2h
+ 
+## SonarQube service
  
  5. [sonar-svc.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/sonar-svc.yml)
  
@@ -105,7 +111,7 @@ Following is used to create the password for the postgres. So i used the object 
          NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
          sonar            NodePort    10.99.198.48     <none>        80:30000/TCP     2h
          
- Once you have created the service and the deployment you need to check on the Pod which will has been created for this SonarQube
+ Once you have create the service and the deployment you need to check the Pod which had been created for SonarQube
 
 You check by giving,
 
