@@ -38,6 +38,8 @@ Following is used to create the password for the postgres. So i used the object 
 1. [postgres-secret.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-secret.yml)
  
          kubectl apply -f postgres-secret.yml
+                     or
+         kubectl create -f postgres-secret.yml
        
   To list the secrets, 
   
@@ -50,6 +52,8 @@ Following is used to create the password for the postgres. So i used the object 
 2. [postgres-deployment.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-deployment.yml)
  
          kubectl apply -f postgres-deployment.yml
+                        or
+         kubectl create -f postgres-deployment.yml
          
          
    To list the deployment,
@@ -62,7 +66,9 @@ Following is used to create the password for the postgres. So i used the object 
          
 3. [postgres-svc.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/postgres-svc.yml)
  
-         kubectl apply -f postgres-svc.yml  
+         kubectl apply -f postgres-svc.yml
+                        or
+         kubectl create -f postgres-svc.yml
          
  To list the service,
  
@@ -75,6 +81,8 @@ Following is used to create the password for the postgres. So i used the object 
 4. [sonar-deployment.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/sonar-deployment.yml)
  
          kubectl apply -f sonar-deployment.yml
+                        or
+         kubectl create -f sonar-deployment.yml               
          
   To list the deployment,
          
@@ -86,6 +94,8 @@ Following is used to create the password for the postgres. So i used the object 
  5. [sonar-svc.yml](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/sonar-svc.yml)
  
          kubectl apply -f sonar-svc.yml
+                        or 
+         kubectl create -f sonar-svc.yml
          
          
  To list the service,
@@ -104,3 +114,52 @@ You check by giving,
          NAME                           READY   STATUS    RESTARTS   AGE
          sonar-postgres-58445ff765-jdmvc   1/1     Running   0          2h
          sonar-6867cc9bc5-bgcnw            1/1     Running   19         3h
+
+Now the pod is in running state for the both sonarqube and postgres.
+
+# Monitoring
+
+We can able to monitor all the above by using the **Minikube Dashboard** to run the dashbord use the below command
+
+           minikube dashborad
+           
+![dashboard](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/minikube-dashboard.png?raw=true"dashboard")
+
+Deployment
+
+![deployment](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/deployment.png?raw=true"deployment")
+
+Service
+
+![service](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/service.png?raw=true"service")
+
+Pod
+
+![pod](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/pod.png?raw=true"pod")
+
+
+To open the sonarqube in the browser you need to get the ip of the mininikube
+
+         minikube ip
+         
+         192.168.99.100
+         
+ Then get the port of the sonar service
+ 
+         kubectl get service
+ 
+         NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+         sonar            NodePort    10.99.198.48     <none>        80:30000/TCP     2h
+         
+ Now open the browser and give the url like,
+ 
+          192.168.99.100:30000
+
+               
+         
+         
+           
+         
+         
+
+
