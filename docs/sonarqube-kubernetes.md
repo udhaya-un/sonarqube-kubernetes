@@ -1,7 +1,7 @@
 ![Logo](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/GeppettoIcon.png?raw=true"Logo")
 
 # SonarQube on Kubernetes
-   In here we will see on how to deploy nexus with kubernetes with volumes for data backup.
+   In here we will see on how to deploy SonarQube with kubernetes with volumes for data backup.
 
 # Content
 1. [Prerequisites](#prerequisites)
