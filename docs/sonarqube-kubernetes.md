@@ -155,10 +155,9 @@ To open the sonarqube in the browser you need to get the ip of the mininikube
  
           192.168.99.100:30000
 
-               
-         
-         
-           
+![sonarqube](https://github.com/udhaya-un/sonarqube-kubernetes/blob/master/docs/sonarqube.png?raw=true"sonarqube")
+
+
          
          
 
